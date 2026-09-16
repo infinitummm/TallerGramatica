@@ -217,7 +217,7 @@ Dado que una computadora no puede asumir de manera determinista cuál de los dos
 
 ---
 
-## 4. Guía de Compilación y Ejecución
+## Guía de Compilación y Ejecución
 
 El proyecto cuenta con `Makefiles` tanto en la raíz como en cada una de las subcarpetas, permitiendo una experiencia de uso simple e intuitiva.
 
