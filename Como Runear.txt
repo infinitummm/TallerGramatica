@@ -1,0 +1,24 @@
+Integrantes: Dylan Torres - Juan Gomez - Javier Rosero
+
+==================================================
+ CÓMO EJECUTAR CADA PUNTO (PYTHON 3)
+==================================================
+
+1. Ejecutar todos los puntos secuencialmente:
+   python3 run_all.py
+
+--------------------------------------------------
+2. PUNTO 1 (Gramática Diapositiva 11 en Python con Visitor y pruebas):
+   cd Punto_1
+   python3 main.py pruebas.txt
+   python3 main.py "2 + 3 * 4"
+
+--------------------------------------------------
+3. PUNTO 2 (Comprobar las diferentes formas de AST - Diapositiva 12 y 13):
+   cd Punto_2
+   python3 main.py
+
+--------------------------------------------------
+4. PUNTO 3 (Demostrar ambigüedad de la gramática de la Diapositiva 15):
+   cd Punto_3
+   python3 main.py
