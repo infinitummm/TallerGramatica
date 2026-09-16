@@ -249,8 +249,3 @@ cd ../Punto_3 && make clean
 
 ---
 
-##  Conclusiones Generales del Laboratorio
-
-1. **La gramática determina la corrección del analizador:** Una especificación rigurosa en ANTLR 4 debe considerar cada operador individualmente. La omisión del operador de resta en la regla formal de la diapositiva 11 demuestra que el parser solo aceptará exactamente lo que se encuentre codificado en la gramática.
-2. **El AST es la estructura óptima para fases posteriores:** La comparación cuantitativa demostró que el AST preserva intacta la semántica de la expresión eliminando más del 65% de los nodos prescindibles del Parse Tree, simplificando la evaluación y optimización.
-3. **La ambigüedad debe ser erradicada en el diseño:** Gramáticas recursivas como $E \to E + E \mid E * E$ no pueden diferenciar la precedencia entre suma y producto por sí solas. La solución formal consiste en estructurar la gramática en capas sucesivas de precedencia ($E \to T \to F$).
