@@ -6,7 +6,7 @@
 
 ---
 
-## 1. Introducción y Propósito del Taller
+##  Introducción y Propósito del Taller
 
 El análisis sintáctico (o *parsing*) es la segunda fase dentro de la arquitectura de un compilador. Su tarea principal es recibir la secuencia de componentes léxicos (*tokens*) producida por el analizador léxico y determinar si dicha secuencia cumple con las reglas estructurales de una **Gramática Libre de Contexto (GLC)**. Además de validar la sintaxis, el analizador construye una representación jerárquica en forma de árbol que servirá de base para las etapas posteriores de análisis semántico y generación de código.
 
@@ -17,7 +17,7 @@ En este taller se abordan tres problemas fundamentales del diseño sintáctico:
 
 ---
 
-## 2. Estructura del Proyecto
+##  Estructura del Proyecto
 
 El repositorio se organiza de forma modular en tres carpetas independientes, acompañadas por herramientas de automatización para su compilación y ejecución:
 
@@ -51,7 +51,7 @@ Quiz Sintactico/
 
 ---
 
-## 3. Desarrollo Detallado por Ejercicio
+##  Desarrollo ejercicios
 
 ### 🔹 Punto 1: Gramática de la Diapositiva 11 (Lenguaje Objetivo: Python)
 
@@ -221,7 +221,7 @@ Dado que una computadora no puede asumir de manera determinista cuál de los dos
 
 El proyecto cuenta con `Makefiles` tanto en la raíz como en cada una de las subcarpetas, permitiendo una experiencia de uso simple e intuitiva.
 
-### 🚀 Ejecutar Todo el Proyecto (Recomendado)
+###  Como ejecutar
 Desde la carpeta raíz `Quiz Sintactico`:
 
 ```bash
@@ -234,47 +234,7 @@ python3 run_all.py
 
 ---
 
-### 🔧 Ejecución Individual por Ejercicio
-
-#### Probar el Punto 1:
-```bash
-cd Punto_1
-
-# Ejecutar la batería completa de pruebas automáticas
-make run
-# o directamente:
-python3 main.py pruebas.txt
-
-# Probar una expresión particular
-python3 main.py "2 + 3 * 4"
-
-# Iniciar la consola interactiva (REPL)
-make interactive
-```
-
-#### Probar el Punto 2:
-```bash
-cd Punto_2
-
-# Ejecutar el análisis comparativo de formas de AST
-make run
-# o directamente:
-python3 main.py
-```
-
-#### Probar el Punto 3:
-```bash
-cd Punto_3
-
-# Ejecutar la demostración de ambigüedad y comparación de árboles
-make run
-# o directamente:
-python3 main.py
-```
-
----
-
-### 🧹 Limpieza de Archivos Generados
+###  Limpieza de Archivos Generados
 Para eliminar todos los archivos autogenerados por ANTLR (`*.tokens`, `*.interp`, archivos `.py` derivados) y cachés `__pycache__`:
 
 ```bash
@@ -289,7 +249,7 @@ cd ../Punto_3 && make clean
 
 ---
 
-## 5. Conclusiones Generales del Laboratorio
+##  Conclusiones Generales del Laboratorio
 
 1. **La gramática determina la corrección del analizador:** Una especificación rigurosa en ANTLR 4 debe considerar cada operador individualmente. La omisión del operador de resta en la regla formal de la diapositiva 11 demuestra que el parser solo aceptará exactamente lo que se encuentre codificado en la gramática.
 2. **El AST es la estructura óptima para fases posteriores:** La comparación cuantitativa demostró que el AST preserva intacta la semántica de la expresión eliminando más del 65% de los nodos prescindibles del Parse Tree, simplificando la evaluación y optimización.
