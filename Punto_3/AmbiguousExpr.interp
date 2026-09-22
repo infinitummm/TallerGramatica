@@ -14,7 +14,7 @@ WS
 
 rule names:
 root
-expr
+e
 
 
 atn:

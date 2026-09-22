@@ -41,11 +41,11 @@ class Expr12Parser ( Parser ):
                       "<INVALID>", "ID", "NUM", "WS" ]
 
     RULE_root = 0
-    RULE_expr = 1
-    RULE_term = 2
-    RULE_factor = 3
+    RULE_e = 1
+    RULE_t = 2
+    RULE_f = 3
 
-    ruleNames =  [ "root", "expr", "term", "factor" ]
+    ruleNames =  [ "root", "e", "t", "f" ]
 
     EOF = Token.EOF
     T__0=1
@@ -72,8 +72,8 @@ class Expr12Parser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def expr(self):
-            return self.getTypedRuleContext(Expr12Parser.ExprContext,0)
+        def e(self):
+            return self.getTypedRuleContext(Expr12Parser.EContext,0)
 
 
         def EOF(self):
@@ -98,7 +98,7 @@ class Expr12Parser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 8
-            self.expr(0)
+            self.e(0)
             self.state = 9
             self.match(Expr12Parser.EOF)
         except RecognitionException as re:
@@ -110,75 +110,43 @@ class Expr12Parser ( Parser ):
         return localctx
 
 
-    class ExprContext(ParserRuleContext):
+    class EContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def t(self):
+            return self.getTypedRuleContext(Expr12Parser.TContext,0)
+
+
+        def e(self):
+            return self.getTypedRuleContext(Expr12Parser.EContext,0)
+
 
         def getRuleIndex(self):
-            return Expr12Parser.RULE_expr
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-    class AddContext(ExprContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a Expr12Parser.ExprContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def expr(self):
-            return self.getTypedRuleContext(Expr12Parser.ExprContext,0)
-
-        def term(self):
-            return self.getTypedRuleContext(Expr12Parser.TermContext,0)
-
+            return Expr12Parser.RULE_e
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAdd" ):
-                return visitor.visitAdd(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class TermOnlyContext(ExprContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a Expr12Parser.ExprContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def term(self):
-            return self.getTypedRuleContext(Expr12Parser.TermContext,0)
-
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTermOnly" ):
-                return visitor.visitTermOnly(self)
+            if hasattr( visitor, "visitE" ):
+                return visitor.visitE(self)
             else:
                 return visitor.visitChildren(self)
 
 
 
-    def expr(self, _p:int=0):
+    def e(self, _p:int=0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = Expr12Parser.ExprContext(self, self._ctx, _parentState)
+        localctx = Expr12Parser.EContext(self, self._ctx, _parentState)
         _prevctx = localctx
         _startState = 2
-        self.enterRecursionRule(localctx, 2, self.RULE_expr, _p)
+        self.enterRecursionRule(localctx, 2, self.RULE_e, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            localctx = Expr12Parser.TermOnlyContext(self, localctx)
-            self._ctx = localctx
-            _prevctx = localctx
-
             self.state = 12
-            self.term(0)
+            self.t(0)
             self._ctx.stop = self._input.LT(-1)
             self.state = 19
             self._errHandler.sync(self)
@@ -188,8 +156,8 @@ class Expr12Parser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = Expr12Parser.AddContext(self, Expr12Parser.ExprContext(self, _parentctx, _parentState))
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
+                    localctx = Expr12Parser.EContext(self, _parentctx, _parentState)
+                    self.pushNewRecursionContext(localctx, _startState, self.RULE_e)
                     self.state = 14
                     if not self.precpred(self._ctx, 2):
                         from antlr4.error.Errors import FailedPredicateException
@@ -197,7 +165,7 @@ class Expr12Parser ( Parser ):
                     self.state = 15
                     self.match(Expr12Parser.T__0)
                     self.state = 16
-                    self.term(0) 
+                    self.t(0) 
                 self.state = 21
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,0,self._ctx)
@@ -211,75 +179,43 @@ class Expr12Parser ( Parser ):
         return localctx
 
 
-    class TermContext(ParserRuleContext):
+    class TContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def f(self):
+            return self.getTypedRuleContext(Expr12Parser.FContext,0)
+
+
+        def t(self):
+            return self.getTypedRuleContext(Expr12Parser.TContext,0)
+
 
         def getRuleIndex(self):
-            return Expr12Parser.RULE_term
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-    class MulContext(TermContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a Expr12Parser.TermContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def term(self):
-            return self.getTypedRuleContext(Expr12Parser.TermContext,0)
-
-        def factor(self):
-            return self.getTypedRuleContext(Expr12Parser.FactorContext,0)
-
+            return Expr12Parser.RULE_t
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitMul" ):
-                return visitor.visitMul(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class FactorOnlyContext(TermContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a Expr12Parser.TermContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def factor(self):
-            return self.getTypedRuleContext(Expr12Parser.FactorContext,0)
-
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFactorOnly" ):
-                return visitor.visitFactorOnly(self)
+            if hasattr( visitor, "visitT" ):
+                return visitor.visitT(self)
             else:
                 return visitor.visitChildren(self)
 
 
 
-    def term(self, _p:int=0):
+    def t(self, _p:int=0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = Expr12Parser.TermContext(self, self._ctx, _parentState)
+        localctx = Expr12Parser.TContext(self, self._ctx, _parentState)
         _prevctx = localctx
         _startState = 4
-        self.enterRecursionRule(localctx, 4, self.RULE_term, _p)
+        self.enterRecursionRule(localctx, 4, self.RULE_t, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            localctx = Expr12Parser.FactorOnlyContext(self, localctx)
-            self._ctx = localctx
-            _prevctx = localctx
-
             self.state = 23
-            self.factor()
+            self.f()
             self._ctx.stop = self._input.LT(-1)
             self.state = 30
             self._errHandler.sync(self)
@@ -289,8 +225,8 @@ class Expr12Parser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = Expr12Parser.MulContext(self, Expr12Parser.TermContext(self, _parentctx, _parentState))
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_term)
+                    localctx = Expr12Parser.TContext(self, _parentctx, _parentState)
+                    self.pushNewRecursionContext(localctx, _startState, self.RULE_t)
                     self.state = 25
                     if not self.precpred(self._ctx, 2):
                         from antlr4.error.Errors import FailedPredicateException
@@ -298,7 +234,7 @@ class Expr12Parser ( Parser ):
                     self.state = 26
                     self.match(Expr12Parser.T__1)
                     self.state = 27
-                    self.factor() 
+                    self.f() 
                 self.state = 32
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,1,self._ctx)
@@ -312,100 +248,59 @@ class Expr12Parser ( Parser ):
         return localctx
 
 
-    class FactorContext(ParserRuleContext):
+    class FContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return Expr12Parser.RULE_factor
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-
-    class ParensContext(FactorContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a Expr12Parser.FactorContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def expr(self):
-            return self.getTypedRuleContext(Expr12Parser.ExprContext,0)
-
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParens" ):
-                return visitor.visitParens(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class NumContext(FactorContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a Expr12Parser.FactorContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
+        def ID(self):
+            return self.getToken(Expr12Parser.ID, 0)
 
         def NUM(self):
             return self.getToken(Expr12Parser.NUM, 0)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNum" ):
-                return visitor.visitNum(self)
-            else:
-                return visitor.visitChildren(self)
+        def e(self):
+            return self.getTypedRuleContext(Expr12Parser.EContext,0)
 
 
-    class IdContext(FactorContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a Expr12Parser.FactorContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def ID(self):
-            return self.getToken(Expr12Parser.ID, 0)
+        def getRuleIndex(self):
+            return Expr12Parser.RULE_f
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitId" ):
-                return visitor.visitId(self)
+            if hasattr( visitor, "visitF" ):
+                return visitor.visitF(self)
             else:
                 return visitor.visitChildren(self)
 
 
 
-    def factor(self):
 
-        localctx = Expr12Parser.FactorContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 6, self.RULE_factor)
+    def f(self):
+
+        localctx = Expr12Parser.FContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 6, self.RULE_f)
         try:
             self.state = 39
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [5]:
-                localctx = Expr12Parser.IdContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 33
                 self.match(Expr12Parser.ID)
                 pass
             elif token in [6]:
-                localctx = Expr12Parser.NumContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 34
                 self.match(Expr12Parser.NUM)
                 pass
             elif token in [3]:
-                localctx = Expr12Parser.ParensContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 35
                 self.match(Expr12Parser.T__2)
                 self.state = 36
-                self.expr(0)
+                self.e(0)
                 self.state = 37
                 self.match(Expr12Parser.T__3)
                 pass
@@ -425,20 +320,20 @@ class Expr12Parser ( Parser ):
     def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
         if self._predicates == None:
             self._predicates = dict()
-        self._predicates[1] = self.expr_sempred
-        self._predicates[2] = self.term_sempred
+        self._predicates[1] = self.e_sempred
+        self._predicates[2] = self.t_sempred
         pred = self._predicates.get(ruleIndex, None)
         if pred is None:
             raise Exception("No predicate with index:" + str(ruleIndex))
         else:
             return pred(localctx, predIndex)
 
-    def expr_sempred(self, localctx:ExprContext, predIndex:int):
+    def e_sempred(self, localctx:EContext, predIndex:int):
             if predIndex == 0:
                 return self.precpred(self._ctx, 2)
          
 
-    def term_sempred(self, localctx:TermContext, predIndex:int):
+    def t_sempred(self, localctx:TContext, predIndex:int):
             if predIndex == 1:
                 return self.precpred(self._ctx, 2)
          

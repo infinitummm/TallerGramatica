@@ -14,38 +14,18 @@ class Expr11Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by Expr11Parser#Add.
-    def visitAdd(self, ctx:Expr11Parser.AddContext):
+    # Visit a parse tree produced by Expr11Parser#e.
+    def visitE(self, ctx:Expr11Parser.EContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by Expr11Parser#TermOnly.
-    def visitTermOnly(self, ctx:Expr11Parser.TermOnlyContext):
+    # Visit a parse tree produced by Expr11Parser#t.
+    def visitT(self, ctx:Expr11Parser.TContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by Expr11Parser#Mul.
-    def visitMul(self, ctx:Expr11Parser.MulContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by Expr11Parser#FactorOnly.
-    def visitFactorOnly(self, ctx:Expr11Parser.FactorOnlyContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by Expr11Parser#Id.
-    def visitId(self, ctx:Expr11Parser.IdContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by Expr11Parser#Num.
-    def visitNum(self, ctx:Expr11Parser.NumContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by Expr11Parser#Parens.
-    def visitParens(self, ctx:Expr11Parser.ParensContext):
+    # Visit a parse tree produced by Expr11Parser#f.
+    def visitF(self, ctx:Expr11Parser.FContext):
         return self.visitChildren(ctx)
 
 

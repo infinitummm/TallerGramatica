@@ -1,20 +1,20 @@
 grammar AmbiguousExpr;
 
 // ============================================================
-// Gramática de la Diapositiva 15 (Ambigua):
+// Gramatica de la Diapositiva 15 (Ambigua):
 // E -> E + E
 // E -> E * E
 // E -> num
 // ============================================================
 
 root
-    : expr EOF
+    : e EOF
     ;
 
-expr
-    : expr '+' expr # Add
-    | expr '*' expr # Mul
-    | NUM           # Num
+e
+    : e '+' e # Add
+    | e '*' e # Mul
+    | NUM     # Num
     ;
 
 NUM : [0-9]+ ('.' [0-9]+)? ;

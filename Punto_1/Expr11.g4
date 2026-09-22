@@ -1,30 +1,27 @@
 grammar Expr11;
 
-
-
 root
-    : expr EOF
+    : e EOF
     ;
 
 // E -> E + T | T
-expr
-    : expr '+' term   # Add
-    | term            # TermOnly
+e
+    : e '+' t
+    | t
     ;
 
 // T -> T * F | F
-term
-    : term '*' factor # Mul
-    | factor          # FactorOnly
+t
+    : t '*' f
+    | f
     ;
 
-// F -> id | num | ( E )
-factor
-    : ID              # Id
-    | NUM             # Num
-    | '(' expr ')'    # Parens
+// F -> id | num | (E)
+f
+    : ID
+    | NUM
+    | '(' e ')'
     ;
-
 
 ID      : [a-zA-Z_][a-zA-Z0-9_]* ;
 NUM     : [0-9]+ ('.' [0-9]+)? ;

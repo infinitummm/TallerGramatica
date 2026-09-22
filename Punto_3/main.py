@@ -13,26 +13,26 @@ from AmbiguousExprAltVisitor import AmbiguousExprAltVisitor
 
 class EvalVisitor1(AmbiguousExprVisitor):
     def visitRoot(self, ctx):
-        return self.visit(ctx.expr())
+        return self.visit(ctx.e())
 
     def visitAdd(self, ctx):
-        return self.visit(ctx.expr(0)) + self.visit(ctx.expr(1))
+        return self.visit(ctx.e(0)) + self.visit(ctx.e(1))
 
     def visitMul(self, ctx):
-        return self.visit(ctx.expr(0)) * self.visit(ctx.expr(1))
+        return self.visit(ctx.e(0)) * self.visit(ctx.e(1))
 
     def visitNum(self, ctx):
         return float(ctx.NUM().getText())
 
 class EvalVisitor2(AmbiguousExprAltVisitor):
     def visitRoot(self, ctx):
-        return self.visit(ctx.expr())
+        return self.visit(ctx.e())
 
     def visitAdd(self, ctx):
-        return self.visit(ctx.expr(0)) + self.visit(ctx.expr(1))
+        return self.visit(ctx.e(0)) + self.visit(ctx.e(1))
 
     def visitMul(self, ctx):
-        return self.visit(ctx.expr(0)) * self.visit(ctx.expr(1))
+        return self.visit(ctx.e(0)) * self.visit(ctx.e(1))
 
     def visitNum(self, ctx):
         return float(ctx.NUM().getText())

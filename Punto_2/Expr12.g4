@@ -1,24 +1,26 @@
 grammar Expr12;
 
-
 root
-    : expr EOF
+    : e EOF
     ;
 
-expr
-    : expr '+' term   # Add
-    | term            # TermOnly
+// E -> E + T | T
+e
+    : e '+' t
+    | t
     ;
 
-term
-    : term '*' factor # Mul
-    | factor          # FactorOnly
+// T -> T * F | F
+t
+    : t '*' f
+    | f
     ;
 
-factor
-    : ID              # Id
-    | NUM             # Num
-    | '(' expr ')'    # Parens
+// F -> id | num | (E)
+f
+    : ID
+    | NUM
+    | '(' e ')'
     ;
 
 ID      : [a-zA-Z_][a-zA-Z0-9_]* ;

@@ -20,9 +20,9 @@ WS
 
 rule names:
 root
-expr
-term
-factor
+e
+t
+f
 
 
 atn:
